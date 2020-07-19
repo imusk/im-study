@@ -27,11 +27,11 @@ public class Demo {
 
         //AnyTest();
 
-        //OneOfTest();
+        OneOfTest();
 
-        MapTest();
+        //MapTest();
 
-//        FromAndToJson();
+        //FromAndToJson();
 
         System.out.println("done");
     }
@@ -170,6 +170,7 @@ public class Demo {
         type3.setValue1(11);
         type3.setValue2(12);
 
+        msg.setMsg1(type1);
         msg.setMsg3(type3);
 
         byte[] result = msg.build().toByteArray();

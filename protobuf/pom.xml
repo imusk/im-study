@@ -125,6 +125,7 @@
                     <!-- 这是你.proto 文件的目录
                     <protoSourceRoot>${basedir}/src/main/java/com/pancm/protobuf</protoSourceRoot>
                     -->
+<!--                    <protoSourceRoot>${basedir}/src/main/proto/test</protoSourceRoot>-->
 
                     <protocArtifact>
                         com.google.protobuf:protoc:${protobuf.version}:exe:${os.detected.classifier}

@@ -1,0 +1,30 @@
+syntax = "proto3";
+package wen.im.test;
+
+option java_package = "com.wen.im.proto.test";
+option java_outer_classname = "MyUserProto";
+
+message MyUser {
+    uint64 id = 1;
+    string name = 2;
+    uint32 age = 3;
+    Address address = 4;
+    Gender gender = 5;
+}
+
+
+message Address {
+    string country = 1;
+    string province = 2;
+    string city = 3;
+    string detail = 4;
+    string postcode = 5;
+}
+
+
+enum Gender {
+    UNKNOWN = 0;
+    MALE = 1;
+    FEMALE = 2;
+}
+
