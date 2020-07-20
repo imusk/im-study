@@ -15,6 +15,7 @@
     <modules>
         <module>protobuf</module>
         <module>rpc-easy-example</module>
+        <module>netty</module>
     </modules>
 
     <properties>
