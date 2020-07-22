@@ -17,6 +17,7 @@
         <module>rpc-easy-example</module>
         <module>netty</module>
         <module>lo-server</module>
+        <module>rpc-netty</module>
     </modules>
 
     <properties>
