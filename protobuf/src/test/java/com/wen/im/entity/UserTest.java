@@ -1,5 +1,6 @@
 package com.wen.im.entity;
 
+import cn.wildfirechat.proto.ProtoConstants;
 import com.alibaba.fastjson.JSON;
 import com.google.protobuf.util.JsonFormat;
 import com.wen.im.proto.test.MyUserProto;
@@ -54,6 +55,22 @@ class UserTest {
         MyUser user = JSON.parseObject(myUserProtoJson, MyUser.class);
 
         System.out.println("MyUser："+ user);
+
+    }
+
+    @Test
+    public void protoConstants() {
+        int value = ProtoConstants.ChatroomState.Enum.Normal.getNumber();
+        int ordinal = ProtoConstants.ChatroomState.Enum.Normal.ordinal();
+
+        int osx = ProtoConstants.Platform.Enum.OSX_VALUE;
+
+        int ios = ProtoConstants.PlatformEnum.Platform_iOS.ordinal();
+
+        System.out.println(value);
+        System.out.println(ordinal);
+        System.out.println(osx);
+        System.out.println(ios);
 
     }
 

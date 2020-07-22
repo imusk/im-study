@@ -1,0 +1,207 @@
+syntax = "proto3";
+package im.wc;
+
+
+option java_package = "cn.wildfirechat.proto";
+option java_outer_classname = "ProtoConstants";
+
+
+message ConversationType {
+    enum Enum {    
+        Private = 0;
+        Group = 1;
+        ChatRoom = 2;
+        Channel = 3;
+        Things = 4;
+    }
+}
+
+message GroupType {
+    enum Enum {    
+        Normal = 0;
+        Free = 1;
+        Restricted = 2;
+    }
+}
+
+
+message GroupMemberType {
+    enum Enum {    
+        Normal = 0;
+        Manager = 1;
+        Owner = 2;
+        Silent = 3;
+        Removed = 4;
+    }
+}
+
+
+message FriendRequestStatus {
+    enum Enum {    
+        Sent = 0;
+        Accepted = 1;
+        Rejected = 2;
+    }
+}
+
+
+message Platform {
+    enum Enum {    
+        UNSET = 0;
+        iOS = 1;
+        Android = 2;
+        Windows = 3;
+        OSX = 4;
+        WEB = 5;
+        WX = 6;
+        LINUX = 7;
+    }
+}
+
+
+message PullType {
+    enum Enum {    
+        Normal = 0;
+        ChatRoom = 1;
+        Group = 2;
+    }
+}
+
+
+message UserResultCode {
+    enum Enum {    
+        Success = 0;
+        NotFound = 1;
+        NotModified = 2;
+    }
+}
+
+
+message ChatroomState {
+    enum Enum {    
+        Normal = 0;
+        NotStart = 1;
+        End = 2;
+    }
+}
+
+
+message ContentType {
+    enum Enum {    
+        Unknown = 0;
+        Text = 1;
+        Voice = 2;
+        Image = 3;
+        Location = 4;
+        File = 5;
+        Video = 6;
+        Sticker = 7;
+        RichMedia = 8;
+    }
+}
+
+
+message ModifyGroupInfoType {
+    enum Enum {    
+        Name = 0;
+        Portrait = 1;
+        Extra = 2;
+        Mute = 3;
+        JoinType = 4;
+        PrivateChat = 5;
+        Searchable = 6;
+    }
+}
+
+
+message PersistFlag {
+    enum Enum {    
+        Not_Persist = 0;
+        Persist = 1;
+        Persist_And_Count = 3;
+        Transparent = 4;
+    }
+}
+
+
+message ModifyChannelInfoType {
+    enum Enum {    
+        Name = 0;
+        Portrait = 1;
+        Desc = 2;
+        Extra = 3;
+        Secret = 4;
+        Callback = 5;
+        OnlyCallback = 6;
+    }
+}
+
+
+//message ChannelState {
+//    enum Enum {
+//    Mask_FullInfo = 0x01;
+//    Mask_Unsubscribed_User_Access = 0x02;
+//    Mask_Active_Subscribe = 0x04;
+//    Mask_Message_Unsubscribed = 0x08;
+//    Mask_Private = 0x10;
+//    Mask_Deleted = 0x40;
+//
+//    }
+//}
+
+
+message UserType {
+    enum Enum {    
+        Normal = 0;
+        Robot = 1;
+        Device = 2;
+        Admin = 3;
+        Super_Admin = 100;
+    }
+}
+
+
+message SystemSettingType {
+    enum Enum {    
+        DEFAULT = 0;
+        Group_Max_Member_Count = 1;
+    }
+}
+
+
+message SearchUserType {
+    enum Enum {    
+        General = 0;
+        Name_Mobile = 1;
+        Name = 2;
+        Mobile = 3;
+    }
+}
+
+
+message UserStatus {
+    enum Enum {    
+        Normal = 0;
+        Muted = 1;
+        Forbidden = 2;
+    }
+}
+
+
+message BlacklistStrategy {
+    enum Enum {    
+        Message_Reject = 0;
+        Message_Ignore = 1;
+    }
+}
+
+enum PlatformEnum {
+    Platform_UNSET = 0;
+    Platform_iOS = 1;
+    Platform_Android = 2;
+    Platform_Windows = 3;
+    Platform_OSX = 4;
+    Platform_WEB = 5;
+    Platform_WX = 6;
+    Platform_LINUX = 7;
+}

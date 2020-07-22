@@ -1,0 +1,161 @@
+// 备份，未处理 Enum 内部属性同名问题
+
+syntax = "proto3";
+package im.wc;
+
+
+option java_package = "cn.wildfirechat.proto";
+option java_outer_classname = "ProtoConstants";
+
+enum ConversationType {
+    Private = 0;
+    Group = 1;
+    ChatRoom = 2;
+    Channel = 3;
+    Things = 4;
+}
+
+enum GroupType {
+    Normal = 0;
+    Free = 1;
+    Restricted = 2;
+}
+
+
+enum GroupMemberType {
+    Normal = 0;
+    Manager = 1;
+    Owner = 2;
+    Silent = 3;
+    Removed = 4;
+}
+
+
+enum FriendRequestStatus {
+    Sent = 0;
+    Accepted = 1;
+    Rejected = 2;
+}
+
+
+enum Platform {
+    UNSET = 0;
+    iOS = 1;
+    Android = 2;
+    Windows = 3;
+    OSX = 4;
+    WEB = 5;
+    WX = 6;
+    LINUX = 7;
+}
+
+
+enum PullType {
+    Normal = 0;
+    ChatRoom = 1;
+    Group = 2;
+}
+
+
+enum UserResultCode {
+    Success = 0;
+    NotFound = 1;
+    NotModified = 2;
+}
+
+
+enum ChatroomState {
+    Normal = 0;
+    NotStart = 1;
+    End = 2;
+}
+
+
+enum ContentType {
+    Unknown = 0;
+    Text = 1;
+    Voice = 2;
+    Image = 3;
+    Location = 4;
+    File = 5;
+    Video = 6;
+    Sticker = 7;
+    RichMedia = 8;
+}
+
+
+enum ModifyGroupInfoType {
+    Name = 0;
+    Portrait = 1;
+    Extra = 2;
+    Mute = 3;
+    JoinType = 4;
+    PrivateChat = 5;
+    Searchable = 6;
+}
+
+
+enum PersistFlag {
+    Not_Persist = 0;
+    Persist = 1;
+    Persist_And_Count = 3;
+    Transparent = 4;
+}
+
+
+enum ModifyChannelInfoType {
+    Name = 0;
+    Portrait = 1;
+    Desc = 2;
+    Extra = 3;
+    Secret = 4;
+    Callback = 5;
+    OnlyCallback = 6;
+}
+
+
+//enum ChannelState {
+//    Mask_FullInfo = 0x01;
+//    Mask_Unsubscribed_User_Access = 0x02;
+//    Mask_Active_Subscribe = 0x04;
+//    Mask_Message_Unsubscribed = 0x08;
+//    Mask_Private = 0x10;
+//    Mask_Deleted = 0x40;
+//}
+
+
+enum UserType {
+    Normal = 0;
+    Robot = 1;
+    Device = 2;
+    Admin = 3;
+    Super_Admin = 100;
+}
+
+
+enum SystemSettingType {
+    DEFAULT = 0;
+    Group_Max_Member_Count = 1;
+}
+
+
+enum SearchUserType {
+    General = 0;
+    Name_Mobile = 1;
+    Name = 2;
+    Mobile = 3;
+}
+
+
+enum UserStatus {
+    Normal = 0;
+    Muted = 1;
+    Forbidden = 2;
+}
+
+
+enum BlacklistStrategy {
+    Message_Reject = 0;
+    Message_Ignore = 1;
+}
+
