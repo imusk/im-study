@@ -18,6 +18,7 @@
         <module>netty</module>
         <module>lo-server</module>
         <module>rpc-netty</module>
+        <module>redis</module>
     </modules>
 
     <properties>
@@ -100,6 +101,12 @@
         </dependency>
 
         <!-- SpringBoot end -->
+
+        <!-- lettuce客户端需要使用到 -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-pool2</artifactId>
+        </dependency>
 
     </dependencies>
 

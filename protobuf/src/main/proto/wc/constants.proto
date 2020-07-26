@@ -204,4 +204,9 @@ enum PlatformEnum {
     Platform_WEB = 5;
     Platform_WX = 6;
     Platform_LINUX = 7;
+
+    Platform_MI = 100;
+    Platform_MEI = 200;
+    Platform_HUA = 50;
+
 }

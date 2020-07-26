@@ -67,10 +67,28 @@ class UserTest {
 
         int ios = ProtoConstants.PlatformEnum.Platform_iOS.ordinal();
 
+        int mei1 = ProtoConstants.PlatformEnum.Platform_MEI.ordinal();
+        int mei2 = ProtoConstants.PlatformEnum.Platform_MEI.getNumber();
+
+        int mi1 = ProtoConstants.PlatformEnum.Platform_MI.ordinal();
+        int mi2 = ProtoConstants.PlatformEnum.Platform_MI.getNumber();
+
+        int hua1 = ProtoConstants.PlatformEnum.Platform_HUA.ordinal();
+        int hua2 = ProtoConstants.PlatformEnum.Platform_HUA_VALUE;
+
         System.out.println(value);
         System.out.println(ordinal);
         System.out.println(osx);
         System.out.println(ios);
+
+        System.out.println("------");
+
+        System.out.println(mei1);
+        System.out.println(mei2);
+        System.out.println(mi1);
+        System.out.println(mi2);
+        System.out.println(hua1);
+        System.out.println(hua2);
 
     }
 
