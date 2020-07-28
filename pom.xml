@@ -19,6 +19,7 @@
         <module>lo-server</module>
         <module>rpc-netty</module>
         <module>redis</module>
+        <module>rocksdb</module>
     </modules>
 
     <properties>
