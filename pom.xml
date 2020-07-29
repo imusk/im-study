@@ -20,6 +20,7 @@
         <module>rpc-netty</module>
         <module>redis</module>
         <module>rocksdb</module>
+        <module>hazelcast</module>
     </modules>
 
     <properties>
