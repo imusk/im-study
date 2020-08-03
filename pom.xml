@@ -21,6 +21,7 @@
         <module>redis</module>
         <module>rocksdb</module>
         <module>hazelcast</module>
+        <module>flyway</module>
     </modules>
 
     <properties>

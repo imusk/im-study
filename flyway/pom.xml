@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>im-study</artifactId>
+        <groupId>com.wen.im</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>flyway</artifactId>
+
+    <!-- 在properties下声明相应的版本信息，然后在dependency下引用的时候用${spring-version}就可以引入该版本jar包了 -->
+    <properties>
+        <!-- 编码 -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!-- jdk -->
+        <java.version>1.8</java.version>
+
+        <!-- springboot -->
+        <platform-bom.version>Cairo-SR3</platform-bom.version>
+
+    </properties>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+
+        <!-- 数据库访问依赖 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- mysql 依赖 -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+
+        <!-- 数据库版本管理 依赖 -->
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-core</artifactId>
+            <version>6.5.3</version>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>
+
+
+    <build>
+
+        <plugins>
+
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <!--
+                baseline：对已经存在数据库Schema结构的数据库一种解决方案。实现在非空数据库新建MetaData表，并把Migrations应用到该数据库；也可以在已有表结构的数据库中实现添加Metadata表。
+                clean：清除掉对应数据库Schema中所有的对象，包括表结构，视图，存储过程等，clean操作在dev 和 test阶段很好用，但在生产环境务必禁用。
+                info：用于打印所有的Migrations的详细和状态信息，也是通过MetaData和Migrations完成的，可以快速定位当前的数据库版本。
+                repair：repair操作能够修复metaData表，该操作在metadata出现错误时很有用。
+                undo：撤销操作，社区版不支持。
+                validate：验证已经apply的Migrations是否有变更，默认开启的，原理是对比MetaData表与本地Migrations的checkNum值，如果值相同则验证通过，否则失败。
+                -->
+                <groupId>org.flywaydb</groupId>
+                <artifactId>flyway-maven-plugin</artifactId>
+                <version>6.5.3</version>
+                <executions>
+                    <!--当install时会执行migrate-->
+                    <execution>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>migrate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <!-- 此处的信息是读取的application.yml中的信息 -->
+                    <url>jdbc:mysql://127.0.0.1:3306/flyway?useUnicode=true&amp;characterEncoding=utf8&amp;zeroDateTimeBehavior=convertToNull&amp;allowMultiQueries=true&amp;serverTimezone=PRC&amp;useSSL=false</url>
+                    <user>root</user>
+                    <password>123456</password>
+                    <driver>com.mysql.jdbc.Driver</driver>
+                    <locations>
+                        <!-- 创表的sql的位置 -->
+                        <!--<location>filesystem:src/main/resources/db/migration</location>-->
+                        <locations>classpath:db/migration/</locations>
+                    </locations>
+                </configuration>
+
+                <!--
+                <configuration>
+                    &lt;!&ndash; 此处的信息是读取的application.yml中的信息 &ndash;&gt;
+                    <url>${spring.datasource.url}</url>
+                    <user>${spring.datasource.username}</user>
+                    <password>${spring.datasource.password}</password>
+                    <driver>${spring.datasource.driver-class-name}</driver>
+                    <schemas>${spring.flyway.schemas}</schemas>
+                    <locations>
+                        &lt;!&ndash; 创表的sql的位置 &ndash;&gt;
+                        <location>filesystem:src/main/resources/db/migration</location>
+                    </locations>
+                </configuration>
+                -->
+            </plugin>
+
+        </plugins>
+
+
+    </build>
+
+    <profiles>
+        <profile>
+
+            <!--不同环境Profile的唯一id-->
+            <id>dev</id>
+
+            <properties>
+                <!--profiles.active是自定义的字段（名字随便起），自定义字段可以有多个-->
+                <spring.profiles.active>dev</spring.profiles.active>
+            </properties>
+
+            <!--activation用来指定激活方式，可以根据jdk环境，环境变量，文件的存在或缺失-->
+            <activation>
+                <!--这个字段表示默认激活-->
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+    </profiles>
+
+
+</project>
