@@ -22,6 +22,7 @@
         <module>rocksdb</module>
         <module>hazelcast</module>
         <module>flyway</module>
+        <module>h2</module>
     </modules>
 
     <properties>
