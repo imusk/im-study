@@ -23,6 +23,7 @@
         <module>hazelcast</module>
         <module>flyway</module>
         <module>h2</module>
+        <module>mqtt-client</module>
     </modules>
 
     <properties>
