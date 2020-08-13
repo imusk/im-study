@@ -1,6 +1,5 @@
 syntax = "proto2";
-//package mars.stn;
-
+package com.github.imusk.im.study.proto.wfc;
 
 option java_package = "cn.wildfirechat.proto";
 option java_outer_classname = "WFCMessage";
@@ -104,10 +103,10 @@ message MessageContent {
     optional bytes data = 5;
     optional int32 mediaType = 6;
     optional string remoteMediaUrl = 7;
-    optional int32 persist_flag= 8;
-    optional int32 expire_duration= 9;
-    optional int32 mentioned_type= 10;
-    repeated string mentioned_target= 11;
+    optional int32 persist_flag = 8;
+    optional int32 expire_duration = 9;
+    optional int32 mentioned_type = 10;
+    repeated string mentioned_target = 11;
 }
 
 message AddGroupMemberRequest {
@@ -184,7 +183,7 @@ message User {
     optional int64 update_dt = 10;
     optional int32 gender = 11;
     optional string social = 12;
-     //0 normal user; 1 robot
+    //0 normal user; 1 robot
     optional int32 type = 13;
 }
 
@@ -330,7 +329,7 @@ message ModifyUserSettingReq {
 }
 
 message Version {
-  required int64 version = 1;
+    required int64 version = 1;
 }
 
 message GetUserSettingResult {
@@ -338,9 +337,9 @@ message GetUserSettingResult {
 }
 
 message Friend {
-  required string uid = 1;
-  required int32 state = 2;
-  required int64 update_dt = 3;
+    required string uid = 1;
+    required int32 state = 2;
+    required int64 update_dt = 3;
 }
 
 message GetFriendsResult {
@@ -414,30 +413,30 @@ message NotifyRecallMessage {
 }
 
 message BlackUserRequest {
-  required string uid = 1;
-  required int32 status = 2;
+    required string uid = 1;
+    required int32 status = 2;
 }
 
 message RouteRequest {
-  optional string app = 1;
-  optional int32 platform = 2;
-  optional int32 push_type = 3;
-  optional string device_name = 4;
-  optional string device_version = 5;
-  optional string phone_name = 6;
-  optional string language = 7;
-  optional string carrier_name = 8;
-  optional string app_version = 9;
-  optional string sdk_version = 10;
+    optional string app = 1;
+    optional int32 platform = 2;
+    optional int32 push_type = 3;
+    optional string device_name = 4;
+    optional string device_version = 5;
+    optional string phone_name = 6;
+    optional string language = 7;
+    optional string carrier_name = 8;
+    optional string app_version = 9;
+    optional string sdk_version = 10;
 }
 
 message RouteResponse {
-  required string host = 1;
-  required int32 long_port = 2;
-  required int32 short_port = 3;
+    required string host = 1;
+    required int32 long_port = 2;
+    required int32 short_port = 3;
 }
 
 message GetTokenRequest {
-  required string user_id = 1;
-  required string client_id = 2;
+    required string user_id = 1;
+    required string client_id = 2;
 }

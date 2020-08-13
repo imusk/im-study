@@ -1,6 +1,5 @@
 syntax = "proto2";
-package im.wc;
-
+package com.github.imusk.im.study.proto.wfc.new;
 
 option java_package = "cn.wildfirechat.proto";
 option java_outer_classname = "MessageProto";

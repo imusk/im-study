@@ -5,9 +5,9 @@ import java.net.Socket;
 import java.util.Date;
 
 /**
- * @author 93806-wenzhou
+ * @author Musk
  * @date 2020-07-20 10:15
- * @email iwenzhou@qq.com
+ * @email muskcool@protonmail.com
  * @description 传统的IO编程-IO客户端
  */
 public class IOClient {

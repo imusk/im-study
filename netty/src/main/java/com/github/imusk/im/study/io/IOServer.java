@@ -6,9 +6,9 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 /**
- * @author 93806-wenzhou
+ * @author Musk
  * @date 2020-07-20 10:12
- * @email iwenzhou@qq.com
+ * @email muskcool@protonmail.com
  * @description 传统的IO编程-IO服务端
  * 场景：：客户端每隔两秒发送一个带有时间戳的"hello world"给服务端，服务端收到之后打印
  * https://www.jianshu.com/p/a4e03835921a

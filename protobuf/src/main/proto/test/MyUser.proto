@@ -1,8 +1,19 @@
+// 指定 Protobuf 协议，默认为2
 syntax = "proto3";
-package wen.im.test;
+// 相当于命名空间，主要处理 message 名一致问题
+package com.github.imusk.im.study.proto.test;
 
+// 生成的Java包名，若该值不存在，则生成包名路径以上面的 package 为准
 option java_package = "com.github.imusk.im.study.proto.test";
+
+// 生成的类名
 option java_outer_classname = "MyUserProto";
+
+// 是否将当前文件内的每个 message enum 生成单个文件，注：每个 message 会生成两个类，如：Address 和 AddressOrBuilder
+option java_multiple_files = false;
+
+// 引用 message Address
+import "test/MyAddress.proto";
 
 message MyUser {
     uint64 id = 1;
@@ -11,16 +22,6 @@ message MyUser {
     Address address = 4;
     Gender gender = 5;
 }
-
-
-message Address {
-    string country = 1;
-    string province = 2;
-    string city = 3;
-    string detail = 4;
-    string postcode = 5;
-}
-
 
 enum Gender {
     UNKNOWN = 0;

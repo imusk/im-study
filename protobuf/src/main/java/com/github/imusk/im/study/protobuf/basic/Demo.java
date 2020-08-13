@@ -1,9 +1,9 @@
 package com.github.imusk.im.study.protobuf.basic;
 
-import com.github.imusk.im.study.proto.AddressBookProtos;
-import com.github.imusk.im.study.proto.AnyProtos;
-import com.github.imusk.im.study.proto.MapProtos;
-import com.github.imusk.im.study.proto.OneOfProtos;
+import com.github.imusk.im.study.proto.demo.AddressBookProto;
+import com.github.imusk.im.study.proto.demo.AnyProto;
+import com.github.imusk.im.study.proto.demo.MapProto;
+import com.github.imusk.im.study.proto.demo.OneOfProto;
 import com.google.protobuf.Any;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.util.JsonFormat;
@@ -38,20 +38,18 @@ public class Demo {
 
     //construct a Person object, and then serialize it.
     private static void ConstructAndSerializeToLocalFile() {
-        AddressBookProtos.Person.Builder person = AddressBookProtos.Person.newBuilder();
+        AddressBookProto.Person.Builder person = AddressBookProto.Person.newBuilder();
 
         person.setId(1);
         person.setName("Lilei");
         person.setEmail("fqyang@163.com");
 
-        AddressBookProtos.Person.PhoneNumber.Builder MobileNumber =
-                AddressBookProtos.Person.PhoneNumber.newBuilder().setNumber("4099134756");
-        MobileNumber.setType(AddressBookProtos.Person.PhoneType.MOBILE);
+        AddressBookProto.Person.PhoneNumber.Builder MobileNumber = AddressBookProto.Person.PhoneNumber.newBuilder().setNumber("4099134756");
+        MobileNumber.setType(AddressBookProto.Person.PhoneType.MOBILE);
         person.addPhones(MobileNumber);
 
-        AddressBookProtos.Person.PhoneNumber.Builder HomeNumber =
-                AddressBookProtos.Person.PhoneNumber.newBuilder().setNumber("10086");
-        HomeNumber.setType(AddressBookProtos.Person.PhoneType.HOME);
+        AddressBookProto.Person.PhoneNumber.Builder HomeNumber = AddressBookProto.Person.PhoneNumber.newBuilder().setNumber("10086");
+        HomeNumber.setType(AddressBookProto.Person.PhoneType.HOME);
         person.addPhones(HomeNumber);
 
         FileOutputStream output = null;
@@ -65,26 +63,27 @@ public class Demo {
     }
 
     private static void DeserializeFromFile() {
-        String MessageFile = "C:\\D_study\\Protobuf\\exercise\\demo1.txt";
+        String MessageFile = "C:\\IM_Study\\Protobuf\\exercise\\demo.txt";
         // Read the existing address book.
         try {
-            AddressBookProtos.Person person =
-                    AddressBookProtos.Person.parseFrom(new FileInputStream(MessageFile));
+            AddressBookProto.Person person = AddressBookProto.Person.parseFrom(new FileInputStream(MessageFile));
 
             System.out.println("Person ID: " + person.getId());
             System.out.println("Name: " + person.getName());
             System.out.println("Email: " + person.getEmail());
 
-            for (AddressBookProtos.Person.PhoneNumber phoneNumber : person.getPhonesList()) {
-                switch (phoneNumber.getType()) {
-                    case AddressBookProtos.Person.PhoneType.MOBILE:
+            for (AddressBookProto.Person.PhoneNumber phoneNumber : person.getPhonesList()) {
+                switch (phoneNumber.getTypeValue()) {
+                    case AddressBookProto.Person.PhoneType.MOBILE_VALUE:
                         System.out.print("  Mobile phone #: ");
                         break;
-                    case AddressBookProtos.Person.PhoneType.HOME:
+                    case AddressBookProto.Person.PhoneType.HOME_VALUE:
                         System.out.print("  Home phone #: ");
                         break;
-                    case AddressBookProtos.Person.PhoneType.WORK:
+                    case AddressBookProto.Person.PhoneType.WORK_VALUE:
                         System.out.print("  Work phone #: ");
+                        break;
+                    default:
                         break;
                 }
                 System.out.println(phoneNumber.getNumber());
@@ -96,27 +95,25 @@ public class Demo {
     }
 
     private static void FromAndToByteArray() {
-        AddressBookProtos.Person.Builder person = AddressBookProtos.Person.newBuilder();
+        AddressBookProto.Person.Builder person = AddressBookProto.Person.newBuilder();
 
         person.setId(1);
         person.setName("Lilei");
         person.setEmail("fqyang@163.com");
 
-        AddressBookProtos.Person.PhoneNumber.Builder MobileNumber =
-                AddressBookProtos.Person.PhoneNumber.newBuilder().setNumber("4099134756");
-        MobileNumber.setType(AddressBookProtos.Person.PhoneType.MOBILE);
+        AddressBookProto.Person.PhoneNumber.Builder MobileNumber = AddressBookProto.Person.PhoneNumber.newBuilder().setNumber("4099134756");
+        MobileNumber.setType(AddressBookProto.Person.PhoneType.MOBILE);
         person.addPhones(MobileNumber);
 
-        AddressBookProtos.Person.PhoneNumber.Builder HomeNumber =
-                AddressBookProtos.Person.PhoneNumber.newBuilder().setNumber("10086");
-        HomeNumber.setType(AddressBookProtos.Person.PhoneType.HOME);
+        AddressBookProto.Person.PhoneNumber.Builder HomeNumber = AddressBookProto.Person.PhoneNumber.newBuilder().setNumber("10086");
+        HomeNumber.setType(AddressBookProto.Person.PhoneType.HOME);
         person.addPhones(HomeNumber);
 
         byte[] result = person.build().toByteArray();
         System.out.println("byte array len: " + result.length);
 
         try {
-            AddressBookProtos.Person PersonCopy = AddressBookProtos.Person.parseFrom(result);
+            AddressBookProto.Person PersonCopy = AddressBookProto.Person.parseFrom(result);
 
             System.out.println("Person ID: " + PersonCopy.getId());
             System.out.println("Name: " + PersonCopy.getName());
@@ -127,15 +124,15 @@ public class Demo {
     }
 
     private static void AnyTest() {
-        AnyProtos.Base.Builder base = AnyProtos.Base.newBuilder();
-        base.setType(AnyProtos.Type.FACE);
+        AnyProto.Base.Builder base = AnyProto.Base.newBuilder();
+        base.setType(AnyProto.Type.FACE);
         base.setPageNumber(2);
         base.setResultPerPage(666);
 
-        AnyProtos.Face.Builder face = AnyProtos.Face.newBuilder();
+        AnyProto.Face.Builder face = AnyProto.Face.newBuilder();
         face.setName("guci");
 
-        AnyProtos.Plate.Builder plate = AnyProtos.Plate.newBuilder();
+        AnyProto.Plate.Builder plate = AnyProto.Plate.newBuilder();
         plate.setEmail("pra@163.com");
 
         Any any = Any.pack(face.build());
@@ -143,13 +140,13 @@ public class Demo {
 
         byte[] result = base.build().toByteArray();
         try {
-            AnyProtos.Base BaseCopy = AnyProtos.Base.parseFrom(result);
+            AnyProto.Base BaseCopy = AnyProto.Base.parseFrom(result);
 
             System.out.println("page number: " + BaseCopy.getPageNumber());
             for (Any item : BaseCopy.getObjectList()) {
-                if (item.is(AnyProtos.Face.class)) {
+                if (item.is(AnyProto.Face.class)) {
                     System.out.println("yes! a face type!");
-                    AnyProtos.Face face_copy = item.unpack(AnyProtos.Face.class);
+                    AnyProto.Face face_copy = item.unpack(AnyProto.Face.class);
                     System.out.println("get value from this any type: " + face_copy.getName());
                 }
             }
@@ -160,13 +157,13 @@ public class Demo {
 
 
     private static void OneOfTest() {
-        OneOfProtos.MyMessage.Builder msg = OneOfProtos.MyMessage.newBuilder();
+        OneOfProto.MyMessage.Builder msg = OneOfProto.MyMessage.newBuilder();
         msg.setUid(666);
 
-        OneOfProtos.MsgType1.Builder type1 = OneOfProtos.MsgType1.newBuilder();
+        OneOfProto.MsgType1.Builder type1 = OneOfProto.MsgType1.newBuilder();
         type1.setValue(1);
 
-        OneOfProtos.MsgType3.Builder type3 = OneOfProtos.MsgType3.newBuilder();
+        OneOfProto.MsgType3.Builder type3 = OneOfProto.MsgType3.newBuilder();
         type3.setValue1(11);
         type3.setValue2(12);
 
@@ -175,7 +172,7 @@ public class Demo {
 
         byte[] result = msg.build().toByteArray();
         try {
-            OneOfProtos.MyMessage msg_copy = OneOfProtos.MyMessage.parseFrom(result);
+            OneOfProto.MyMessage msg_copy = OneOfProto.MyMessage.parseFrom(result);
             //get a value which has not been set
             System.out.println("PID: " + msg_copy.getPid());
 
@@ -197,14 +194,14 @@ public class Demo {
     }
 
     private static void MapTest() {
-        MapProtos.Man.Builder man = MapProtos.Man.newBuilder();
+        MapProto.Man.Builder man = MapProto.Man.newBuilder();
         man.putSkills("C++", "master");
         man.putSkills("Java", "excellent");
         man.putSkills("big data", "nice");
 
         byte[] result = man.build().toByteArray();
         try {
-            MapProtos.Man manCopy = MapProtos.Man.parseFrom(result);
+            MapProto.Man manCopy = MapProto.Man.parseFrom(result);
 
             System.out.println("value: " + manCopy.getSkillsMap().get("C++"));
         } catch (InvalidProtocolBufferException e) {
@@ -213,7 +210,7 @@ public class Demo {
     }
 
     private static void FromAndToJson() {
-        MapProtos.Man.Builder man = MapProtos.Man.newBuilder();
+        MapProto.Man.Builder man = MapProto.Man.newBuilder();
 
         man.setName("张三");
 
@@ -226,7 +223,7 @@ public class Demo {
             String JsonStr = JsonFormat.printer().print(man);
             System.out.println("json: " + JsonStr);
 
-            MapProtos.Man.Builder manCopy = MapProtos.Man.newBuilder();
+            MapProto.Man.Builder manCopy = MapProto.Man.newBuilder();
             JsonFormat.parser().merge(JsonStr, manCopy);
             System.out.println("value: " + manCopy.getSkillsMap().get("C++"));
         } catch (Exception e) {

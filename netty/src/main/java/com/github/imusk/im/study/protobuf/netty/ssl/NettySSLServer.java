@@ -14,9 +14,9 @@ import javax.net.ssl.SSLEngine;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @author 93806-wenzhou
+ * @author Musk
  * @date 2020-07-20 16:26
- * @email iwenzhou@qq.com
+ * @email muskcool@protonmail.com
  * @description 基于Netty实现的服务端
  * https://www.jianshu.com/p/ec3ebb396943
  */

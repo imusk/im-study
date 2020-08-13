@@ -1,7 +1,7 @@
 package com.github.imusk.im.study.protobuf.rabbitmq;
 
+import com.github.imusk.im.study.proto.demo.AddressBookProto;
 import com.github.imusk.im.study.protobuf.rabbitmq.utils.ConnectionUtil;
-import com.github.imusk.im.study.proto.AddressBookProtos;
 
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
@@ -30,20 +30,18 @@ public class Sender {
         //参数5 我们的一些其他参数
         channel.queueDeclare(QUEUE, false, false, false, null);
 
-        AddressBookProtos.Person.Builder person =  AddressBookProtos.Person.newBuilder();
+        AddressBookProto.Person.Builder person =  AddressBookProto.Person.newBuilder();
 
         person.setId(1);
         person.setName("Lilei");
         person.setEmail("fqyang@163.com");
 
-        AddressBookProtos.Person.PhoneNumber.Builder MobileNumber =
-                AddressBookProtos.Person.PhoneNumber.newBuilder().setNumber("4099134756");
-        MobileNumber.setType(AddressBookProtos.Person.PhoneType.MOBILE);
+        AddressBookProto.Person.PhoneNumber.Builder MobileNumber = AddressBookProto.Person.PhoneNumber.newBuilder().setNumber("4099134756");
+        MobileNumber.setType(AddressBookProto.Person.PhoneType.MOBILE);
         person.addPhones(MobileNumber);
 
-        AddressBookProtos.Person.PhoneNumber.Builder HomeNumber =
-                AddressBookProtos.Person.PhoneNumber.newBuilder().setNumber("10086");
-        HomeNumber.setType(AddressBookProtos.Person.PhoneType.HOME);
+        AddressBookProto.Person.PhoneNumber.Builder HomeNumber = AddressBookProto.Person.PhoneNumber.newBuilder().setNumber("10086");
+        HomeNumber.setType(AddressBookProto.Person.PhoneType.HOME);
         person.addPhones(HomeNumber);
 
         byte[] MessageEntity = person.build().toByteArray();

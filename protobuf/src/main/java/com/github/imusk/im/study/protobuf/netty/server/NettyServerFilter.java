@@ -1,6 +1,6 @@
 package com.github.imusk.im.study.protobuf.netty.server;
 
-import com.pancm.protobuf.UserInfo;
+import com.github.imusk.im.study.proto.netty.UserInfoProto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -36,7 +36,7 @@ public class NettyServerFilter extends ChannelInitializer<SocketChannel> {
         // 解码和编码，应和客户端一致
         //传输的协议 Protobuf
         ph.addLast(new ProtobufVarint32FrameDecoder());
-        ph.addLast(new ProtobufDecoder(UserInfo.UserMsg.getDefaultInstance()));
+        ph.addLast(new ProtobufDecoder(UserInfoProto.UserMsg.getDefaultInstance()));
         ph.addLast(new ProtobufVarint32LengthFieldPrepender());
         ph.addLast(new ProtobufEncoder());
 

@@ -11,11 +11,11 @@ import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
  */
 public class WSClientDemo {
 
-    private static final String address = "ws://127.0.0.1:1884";
+    private static final String address = "ws://127.0.0.1:1884/mqtt";
 
     private static final String topic = "MQTT/TOPIC";
 
-    private static final String clientId = "MQTT_SUB_CLIENT";
+    private static final String clientId = "MQTT_CLIENT_ID_" + System.currentTimeMillis();
 
     public static void main(String[] args) throws Exception {
 
@@ -51,7 +51,7 @@ public class WSClientDemo {
         String message = "Hello " + System.currentTimeMillis();
         client.publish(topic, message.getBytes(), 1, false);
 
-        client.disconnect();
+        //client.disconnect();
     }
 
 

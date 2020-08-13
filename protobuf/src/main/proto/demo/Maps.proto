@@ -1,0 +1,10 @@
+syntax = "proto3";
+package com.github.imusk.im.study.proto.demo;
+
+option java_package = "com.github.imusk.im.study.proto.demo";
+option java_outer_classname = "MapProto";
+
+message Man {
+    string name = 1;
+    map<string, string> skills = 2;
+}

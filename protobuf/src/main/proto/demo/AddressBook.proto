@@ -1,8 +1,8 @@
-syntax = "proto3"; // 声明为protobuf 3定义文件
-package scut;
+syntax = "proto3";
+package com.github.imusk.im.study.proto.demo;
 
-option java_package = "com.github.imusk.im.study.proto"; // 声明生成消息类的java包路径
-option java_outer_classname = "AddressBookProtos";  // 声明生成消息类的类名
+option java_package = "com.github.imusk.im.study.proto.demo";
+option java_outer_classname = "AddressBookProto";
 
 message Person {
     string name = 1;

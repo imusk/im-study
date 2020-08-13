@@ -10,9 +10,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 /**
- * @author 93806-wenzhou
+ * @author Musk
  * @date 2020-08-03 14:16
- * @email iwenzhou@qq.com
+ * @email muskcool@protonmail.com
  * @description ApplicationTest
  */
 //回滚数据

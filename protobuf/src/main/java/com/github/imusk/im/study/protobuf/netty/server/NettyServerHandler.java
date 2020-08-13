@@ -1,7 +1,7 @@
 package com.github.imusk.im.study.protobuf.netty.server;
 
-import com.pancm.protobuf.UserInfo;
 
+import com.github.imusk.im.study.proto.netty.UserInfoProto;
 import org.springframework.stereotype.Service;
 
 import io.netty.channel.ChannelHandlerContext;
@@ -35,7 +35,11 @@ public class NettyServerHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         System.out.println("连接的客户端地址:" + ctx.channel().remoteAddress());
-        UserInfo.UserMsg userMsg = UserInfo.UserMsg.newBuilder().setId(1).setAge(18).setName("xuwujing").setState(0)
+        UserInfoProto.UserMsg userMsg = UserInfoProto.UserMsg.newBuilder()
+                .setId(1)
+                .setAge(18)
+                .setName("xuwujing")
+                .setState(0)
                 .build();
         ctx.writeAndFlush(userMsg);
         super.channelActive(ctx);
@@ -69,8 +73,8 @@ public class NettyServerHandler extends ChannelInboundHandlerAdapter {
         System.out.println("第" + count + "次" + ",服务端接受的消息:" + msg);
         try {
             // 如果是protobuf类型的数据
-            if (msg instanceof UserInfo.UserMsg) {
-                UserInfo.UserMsg userState = (UserInfo.UserMsg) msg;
+            if (msg instanceof UserInfoProto.UserMsg) {
+                UserInfoProto.UserMsg userState = (UserInfoProto.UserMsg) msg;
                 if (userState.getState() == 1) {
                     System.out.println("客户端业务处理成功!");
                 } else if (userState.getState() == 2) {

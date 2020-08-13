@@ -2,8 +2,9 @@ package com.github.imusk.im.study.protobuf.entity;
 
 import cn.wildfirechat.proto.ProtoConstants;
 import com.alibaba.fastjson.JSON;
-import com.google.protobuf.util.JsonFormat;
+import com.github.imusk.im.study.proto.test.AddressProto;
 import com.github.imusk.im.study.proto.test.MyUserProto;
+import com.google.protobuf.util.JsonFormat;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -34,7 +35,7 @@ class UserTest {
     public void userProto() throws Exception {
         MyUserProto.MyUser.Builder myUser = MyUserProto.MyUser.newBuilder();
 
-        MyUserProto.Address.Builder address = MyUserProto.Address.newBuilder();
+        AddressProto.Address.Builder address = AddressProto.Address.newBuilder();
         address.setCountry("中国");
         address.setProvince("福建");
         address.setCity("厦门");

@@ -1,0 +1,27 @@
+syntax = "proto3";
+package com.github.imusk.im.study.proto.test;
+
+option java_package = "com.github.imusk.im.study.proto.test.hello";
+
+option java_outer_classname = "HelloServiceProto";
+
+// 编译后会生成多个Message类，并没有被包含在HelloServiceProto.java文件中,反之,生成单一HelloServiceProto.java文件
+option java_multiple_files = true;
+
+//服务端接口类
+service Greeter {
+    //服务端接口方法
+    rpc SayHello (HelloRequest) returns (HelloReply) {
+    }
+}
+
+//请求参数 基于序号的协议字段映射，所以字段可以乱序，可缺段
+message HelloRequest {
+    string name = 1;
+    string sex = 2;
+}
+
+//响应参数
+message HelloReply {
+    string message = 1;
+}

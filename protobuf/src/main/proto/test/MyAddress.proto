@@ -1,0 +1,16 @@
+syntax = "proto3";
+package com.github.imusk.im.study.proto.test;
+
+option java_package = "com.github.imusk.im.study.proto.test";
+
+option java_outer_classname = "AddressProto";
+
+option java_multiple_files = false;
+
+message Address {
+    string country = 1;
+    string province = 2;
+    string city = 3;
+    string detail = 4;
+    string postcode = 5;
+}

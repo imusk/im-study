@@ -12,9 +12,9 @@ import java.nio.charset.Charset;
 import java.util.*;
 
 /**
- * @author 93806-wenzhou
+ * @author Musk
  * @date 2020-07-20 15:28
- * @email iwenzhou@qq.com
+ * @email muskcool@protonmail.com
  * @description 用JDK原生的NIO来实现服务端
  */
 public class NIOServer {

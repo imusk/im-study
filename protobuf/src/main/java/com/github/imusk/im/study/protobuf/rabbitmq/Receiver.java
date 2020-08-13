@@ -1,9 +1,9 @@
 package com.github.imusk.im.study.protobuf.rabbitmq;
 
+import com.github.imusk.im.study.proto.demo.AddressBookProto;
 import com.github.imusk.im.study.protobuf.rabbitmq.utils.ConnectionUtil;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.rabbitmq.client.*;
-import com.github.imusk.im.study.proto.AddressBookProtos;
 
 import java.io.IOException;
 
@@ -31,7 +31,7 @@ public class Receiver {
             public void handleDelivery(String consumerTag, Envelope envelope, AMQP.BasicProperties properties, byte[] body)
                     throws IOException {
                 try {
-                    AddressBookProtos.Person PersonCopy = AddressBookProtos.Person.parseFrom(body);
+                    AddressBookProto.Person PersonCopy = AddressBookProto.Person.parseFrom(body);
                     System.out.println("Received Message!");
                     System.out.println("Person ID: " + PersonCopy.getId());
                     System.out.println("Name: " + PersonCopy.getName());

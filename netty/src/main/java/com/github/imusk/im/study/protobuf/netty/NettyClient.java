@@ -12,9 +12,9 @@ import io.netty.util.AttributeKey;
 import java.util.Date;
 
 /**
- * @author 93806-wenzhou
+ * @author Musk
  * @date 2020-07-20 16:32
- * @email iwenzhou@qq.com
+ * @email muskcool@protonmail.com
  * @description 基于Netty实现的客户端
  */
 public class NettyClient {

@@ -5,9 +5,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
- * @author 93806-wenzhou
+ * @author Musk
  * @date 2020-08-03 14:14
- * @email iwenzhou@qq.com
+ * @email muskcool@protonmail.com
  * @description UserService
  */
 public interface UserService {

@@ -1,0 +1,28 @@
+syntax = "proto3";
+package com.github.imusk.im.study.proto.demo;
+
+option java_package = "com.github.imusk.im.study.proto.demo";
+option java_outer_classname = "AnyProto";
+
+//使用Any必须要导入Google的Any.proto
+import "google/protobuf/any.proto";
+
+enum Type {
+    FACE = 0;
+    PLATE = 1;
+}
+
+message Base {
+    Type type = 1;
+    int32 page_number = 2;
+    int32 result_per_page = 3;
+    repeated google.protobuf.Any object = 4;
+}
+
+message Face {
+    string name = 1;
+}
+
+message Plate {
+    string email = 1;
+}

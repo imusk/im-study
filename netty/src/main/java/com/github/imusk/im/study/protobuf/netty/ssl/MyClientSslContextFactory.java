@@ -8,9 +8,9 @@ import java.io.InputStream;
 import java.security.KeyStore;
 
 /**
- * @author 93806-wenzhou
+ * @author Musk
  * @date 2020-07-24 12:50
- * @email iwenzhou@qq.com
+ * @email muskcool@protonmail.com
  * @description MyClientSslContextFactory
  */
 public class MyClientSslContextFactory {

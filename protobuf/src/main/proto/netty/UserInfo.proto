@@ -1,9 +1,8 @@
 syntax = "proto3";
+package com.github.imusk.im.study.proto.netty;
 
-// 生成的包名
-option java_package="com.pancm.protobuf";
-//生成的java名
-option java_outer_classname = "UserInfo";
+option java_package="com.github.imusk.im.study.proto.netty";
+option java_outer_classname = "UserInfoProto";
 
 message UserMsg {
 

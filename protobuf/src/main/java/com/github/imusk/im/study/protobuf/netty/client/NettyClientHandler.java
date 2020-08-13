@@ -1,6 +1,6 @@
 package com.github.imusk.im.study.protobuf.netty.client;
 
-import com.pancm.protobuf.UserInfo;
+import com.github.imusk.im.study.proto.netty.UserInfoProto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -62,7 +62,7 @@ public class NettyClientHandler extends ChannelInboundHandlerAdapter {
         if (obj instanceof IdleStateEvent) {
             IdleStateEvent event = (IdleStateEvent) obj;
             if (IdleState.WRITER_IDLE.equals(event.state())) { // 如果写通道处于空闲状态,就发送心跳命令
-                UserInfo.UserMsg.Builder userState = UserInfo.UserMsg.newBuilder().setState(2);
+                UserInfoProto.UserMsg.Builder userState = UserInfoProto.UserMsg.newBuilder().setState(2);
                 ctx.channel().writeAndFlush(userState);
                 fcount++;
             }
@@ -75,21 +75,21 @@ public class NettyClientHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         // 如果不是protobuf类型的数据
-        if (!(msg instanceof UserInfo.UserMsg)) {
+        if (!(msg instanceof UserInfoProto.UserMsg)) {
             System.out.println("未知数据!" + msg);
             return;
         }
         try {
 
             // 得到protobuf的数据
-            UserInfo.UserMsg userMsg = (UserInfo.UserMsg) msg;
+            UserInfoProto.UserMsg userMsg = (UserInfoProto.UserMsg) msg;
             // 进行相应的业务处理。。。
             // 这里就从简了，只是打印而已
             System.out.println(
                     "客户端接受到的用户信息。编号:" + userMsg.getId() + ",姓名:" + userMsg.getName() + ",年龄:" + userMsg.getAge());
 
             // 这里返回一个已经接受到数据的状态
-            UserInfo.UserMsg.Builder userState = UserInfo.UserMsg.newBuilder().setState(1);
+            UserInfoProto.UserMsg.Builder userState = UserInfoProto.UserMsg.newBuilder().setState(1);
             ctx.writeAndFlush(userState);
             System.out.println("成功发送给服务端!");
         } catch (Exception e) {
