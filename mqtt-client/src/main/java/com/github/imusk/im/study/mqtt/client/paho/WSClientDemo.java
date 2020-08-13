@@ -48,7 +48,7 @@ public class WSClientDemo {
 
         client.subscribe(topic);
 
-        String message = "Hello " + System.currentTimeMillis();
+        String message = "Hello MQTT, from WS Client, Timestamp " + System.currentTimeMillis();
         client.publish(topic, message.getBytes(), 1, false);
 
         //client.disconnect();
