@@ -52,7 +52,7 @@ public class SSLClientDemo {
         Integer port = 8883;
 
         String version = "3.1";
-        String websocketPath = "";
+        String websocketPath = "/mqtt";
 
         Long keepAlive = 300L;
         Long connectMaxAttempts = 0L;
@@ -63,7 +63,7 @@ public class SSLClientDemo {
 
         // 是否配置证书
         Boolean isDualSSL = true;
-        String certFilePath = "conf\\server.pfx";
+        String certFilePath = "/Users/wen/Desktop/im/im-study/mqtt-client/src/main/resources/conf/server.pfx";
         String certPassword = "654321";
 
         Mqtt3ClientBuilder mqtt3ClientBuilder = Mqtt3Client.builder()
@@ -77,6 +77,7 @@ public class SSLClientDemo {
 
         if ("SSL".equals(protocol) || "WSS".equals(protocol)) {
             MqttClientSslConfig sslConfig = HiveMQTTSSL.createSsl(isDualSSL, certFilePath, certPassword);
+//            MqttClientSslConfig sslConfig = HiveMQTTSSL.createSsl(false, "", "");
             mqtt3ClientBuilder = mqtt3ClientBuilder.sslConfig(sslConfig);
         }
 
@@ -123,7 +124,7 @@ public class SSLClientDemo {
 
         // 发布消息
         client.publishWith()
-                .topic("MS")
+                .topic(topic)
                 .payload(("Hello MQTT " + System.currentTimeMillis()).getBytes())
                 .qos(MqttQos.AT_LEAST_ONCE)
                 .retain(false)
