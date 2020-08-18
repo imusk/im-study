@@ -63,7 +63,7 @@ public class SSLClientDemo {
 
         // 是否配置证书
         Boolean isDualSSL = true;
-        String certFilePath = "/Users/wen/Desktop/im/im-study/mqtt-client/src/main/resources/conf/server.pfx";
+        String certFilePath = "conf/server.pfx";
         String certPassword = "654321";
 
         Mqtt3ClientBuilder mqtt3ClientBuilder = Mqtt3Client.builder()

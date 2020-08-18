@@ -15,14 +15,19 @@ public class TCPClientDemo {
 
     private static final String topic = "MQTT/TOPIC";
 
-    private static final String clientId = "MQTT_CLIENT_ID_" + System.currentTimeMillis();
+//    private static final String clientId = "MQTT_CLIENT_ID_" + System.currentTimeMillis();
 
     public static void main(String[] args) throws Exception {
 
+        String clientId = "client_100001";
         MqttClient client = new MqttClient(address, clientId, new MemoryPersistence());
+//        MqttClient client = new MqttClient(address, "client111", new MemoryPersistence());
 
         MqttConnectOptions options = new MqttConnectOptions();
         options.setCleanSession(false);
+        options.setUserName("uid_100001");
+        options.setPassword("123456".toCharArray());
+        options.setMqttVersion(4);
 
         System.out.println("Connecting to broker: " + address);
 
@@ -46,10 +51,12 @@ public class TCPClientDemo {
             }
         });
 
-        client.subscribe(topic);
+        System.out.println("已连接成功");
 
-        String message = "Hello MQTT, from TCP Client, Timestamp " + System.currentTimeMillis();
-        client.publish(topic, message.getBytes(), 1, false);
+//        client.subscribe("IM/OFFLINE");
+//
+//        String message = "Hello MQTT, from TCP Client, Timestamp " + System.currentTimeMillis();
+//        client.publish(topic, message.getBytes(), 1, false);
 
         //client.disconnect();
     }

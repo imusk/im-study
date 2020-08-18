@@ -115,7 +115,7 @@ public class TcpClient extends SimpleChannelInboundHandler<ChatMessageProto.Chat
             String[] identities = msg.substring(3, i).split("/");
             if (identities.length == 2) {
                 tcpClient.channel.writeAndFlush(ChatMessageProto.ChatMessage.newBuilder()
-                .setTo(ChatMessageProto.User.newBuilder().setUsername(identities[0]).setAddress("/" + identities[1]))
+                        .setTo(ChatMessageProto.User.newBuilder().setUsername(identities[0]).setAddress("/" + identities[1]))
                         .setFrom(tcpClient.user)
                         .setContent(msg.substring(i + 1))
                         .setMsgType(ChatMessageProto.ChatMessage.MsgType.PRIVATE)
