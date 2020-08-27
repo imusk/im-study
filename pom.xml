@@ -24,6 +24,7 @@
         <module>flyway</module>
         <module>h2</module>
         <module>mqtt-client</module>
+        <module>mapstruct</module>
     </modules>
 
     <properties>
