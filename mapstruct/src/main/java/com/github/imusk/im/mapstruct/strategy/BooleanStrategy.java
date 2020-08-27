@@ -11,6 +11,7 @@ import java.math.BigDecimal;
  * @classname: BooleanStrategy
  * @description: 布尔型策略
  */
+@Component
 public class BooleanStrategy {
 
     public Boolean stringToBoolean(String value) {

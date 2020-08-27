@@ -13,6 +13,7 @@ import java.util.Date;
  * @classname: DateStrategy
  * @description: 日期转换
  */
+@Component
 public class DateStrategy {
 
     public String asString(Date date) {

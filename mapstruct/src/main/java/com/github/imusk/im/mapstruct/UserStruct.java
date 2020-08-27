@@ -5,24 +5,21 @@ import com.github.imusk.im.dto.UserInfoDto;
 import com.github.imusk.im.entity.UserInfo;
 import com.github.imusk.im.enums.Gender;
 import com.github.imusk.im.mapstruct.strategy.BooleanStrategy;
-import org.mapstruct.*;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.Mappings;
+import org.mapstruct.ReportingPolicy;
 import org.mapstruct.factory.Mappers;
-
-import java.math.BigDecimal;
 
 /**
  * @author: Musk
  * @email: muskcool@protonmail.com
  * @datetime: 2020-08-27 09:04:36
  * @classname: UseInfoStruct
- * @description: 静态方法
+ * @description: Spring注解模式
  */
-@Mapper(uses = {BooleanStrategy.class})
-public interface UserInfoStruct extends BaseStruct<UserInfoDto, UserInfo> {
-
-    //静态方法
-    UserInfoStruct INSTANCE = Mappers.getMapper(UserInfoStruct.class);
-
+@Mapper(componentModel = "spring", uses = {BooleanStrategy.class}, unmappedTargetPolicy = ReportingPolicy.IGNORE)
+public interface UserStruct extends BaseStruct<UserInfoDto, UserInfo> {
 
     @Override
     @Mappings({
